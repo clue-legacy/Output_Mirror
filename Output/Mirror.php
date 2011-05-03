@@ -25,20 +25,15 @@ class Output_Mirror{
      */
     public function __construct(&$ref){
         $this->ref =& $ref;
-        if(ob_start(array($this,'obFlush'),2) === false){ // start smallest possible output buffer (chunksize=2 as 1 is reserved)
+        
+        $fn = function($chunk) use (&$ref){
+            $ref .= $chunk;
+            return false;  // display original output
+        };
+        
+        if(ob_start($fn,2) === false){ // start smallest possible output buffer (chunksize=2 as 1 is reserved)
             throw new Exception('Unable to start output buffer');
         }
-    }
-    
-    /**
-     * flush new output chunk (this callback MUST NOT be called manually!)
-     * 
-     * @param string $chunk
-     * @return boolean
-     */
-    public function obFlush($chunk){
-        $this->ref .= $chunk;
-        return false;                                                           // display original output
     }
     
     /**
