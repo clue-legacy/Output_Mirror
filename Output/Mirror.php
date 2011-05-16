@@ -7,7 +7,11 @@
  * mirrored to the referenced string as long as and instance of the mirror
  * lives.
  * 
- * @author mE
+ * @author Christian Lück <christian@lueck.tv>
+ * @copyright Copyright (c) 2011, Christian Lück
+ * @license http://www.opensource.org/licenses/mit-license MIT License
+ * @version v0.1.0
+ * @link https://github.com/clue/Output_Mirror
  */
 class Output_Mirror{
     /**
