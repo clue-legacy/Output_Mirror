@@ -6,6 +6,8 @@ require_once 'Output/Mirror.php';
 class Output_MirrorTest extends PHPUnit_Framework_TestCase {
     
     public function testOne(){
+        $this->expectOutputString('123456');
+        
         $output = 'initial';
         $r = new Output_Mirror($output);
         
@@ -26,6 +28,7 @@ class Output_MirrorTest extends PHPUnit_Framework_TestCase {
     }
     
     public function testInit(){
+        $this->expectOutputString('');
         $output = '';
         new Output_Mirror($output);
         
@@ -33,6 +36,8 @@ class Output_MirrorTest extends PHPUnit_Framework_TestCase {
     }
     
     public function testMultiple(){
+        $this->expectOutputString('123');
+        
         $a = '';
         $b = '';
         
@@ -55,6 +60,8 @@ class Output_MirrorTest extends PHPUnit_Framework_TestCase {
     }
     
     public function testNested(){
+        $this->expectOutputString('123456');
+        
         $a = '';
         $am = new Output_Mirror($a);
         
@@ -70,6 +77,8 @@ class Output_MirrorTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('123456',(string)$am);
     }
     private function b(){
+        $this->expectOutputString('34');
+        
         $b = '';
         $bm = new Output_Mirror($b);
         
